@@ -1,0 +1,1 @@
+docker run -dp 4455:4455 --gpus device=0 --name test-upsampler enlightdev/diffusionupsamplerapi:latest

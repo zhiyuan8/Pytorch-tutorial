@@ -1,0 +1,4 @@
+pymongo
+flask
+google-cloud-storage
+python-dotenv

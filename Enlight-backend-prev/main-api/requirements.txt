@@ -1,0 +1,15 @@
+Flask
+pymongo
+ipdb
+Flask-SocketIO
+requests
+Flask-Cors
+simple-websocket
+redis
+redis-py-cluster
+python-dotenv
+Pillow
+google-cloud-storage
+gunicorn
+langchain
+openai

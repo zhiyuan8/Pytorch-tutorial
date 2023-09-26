@@ -1,0 +1,40 @@
+.container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip {
+    position: absolute;
+    background-color: rgba(104, 104, 104, 0.63);
+    color: rgb(206, 206, 206);
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: -35px;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .tooltip-light {
+    position: absolute;
+    background-color: rgba(228, 228, 228, 0.684);
+    color: rgb(105, 105, 105);
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: -35px;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .container:hover .tooltip {
+    opacity: 1;
+  }
+
+  .container:hover .tooltip-light {
+    opacity: 1;
+  }

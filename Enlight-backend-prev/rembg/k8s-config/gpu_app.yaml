@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-gpu-pod
+  labels:
+    app: my-gpu-app
+spec:
+  nodeSelector:
+    cloud.google.com/gke-accelerator: nvidia-tesla-t4
+  containers:
+  - name: my-gpu-container
+    image: enlightdev/rembg-api:latest
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+      requests:
+        cpu: "18"
+        memory: "18Gi"
+    ports:
+    - containerPort: 4000
+

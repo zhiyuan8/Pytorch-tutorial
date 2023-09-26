@@ -1,0 +1,679 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* To disable the resizing of textarea */
+textarea {
+  resize: none;
+}
+
+/* Set the style of the scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(99, 99, 99);
+  border-radius: 40px;
+  /* border: 4px; */
+  border: 3px solid #232323;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #232323;
+  background-clip: content-box;
+  border: 0px solid;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+/* color-picker style  */
+
+/* Note that media screen will be inserted in respective position 
+  in the code below. For example, for the css code of the nav part,
+  we insert the variation of the screen by screen right below the
+  nav code.*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+/* Set the style of the scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(99, 99, 99);
+  border-radius: 40px;
+  /* border: 4px; */
+  border: 3px solid #232323;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #232323;
+  background-clip: content-box;
+  border: 0px solid;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+/* color-picker style  */
+
+
+html {
+  /* width: 1600px; */
+  /* width: 70%; */
+  font-size: 22px;
+  height: auto;
+  margin: 0 auto;
+  background-color: #232323;
+  font-family: Inter, sans-serif;
+}
+
+h3 {
+  font-size: 40px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 1.5em auto;
+  /* center the text */
+  text-align: center;
+}
+
+.hand-cursor {
+  cursor: pointer;
+}
+
+.background-image{
+  background-image: url('imgs/bg_img.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #232323;
+  background-position: top;
+}
+
+.SizeControl{
+  max-width: 70%;
+  max-width: 1250px;
+}
+
+/* Set the style of the Nav bar area. */
+.Nav{
+  min-height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 24px;
+  align-items: center;
+  /* use flex end */
+  margin: 0em auto;
+  padding-top: 4em;
+  padding-bottom: 4em;
+
+  /* identical to box height */
+  color: #FFFFFF;
+}
+
+.Nav img{
+  height: 80px;
+}
+
+.Nav p:hover{
+  font-weight: 500;
+
+}
+
+.Nav button:hover{
+  background: #67b3b3ad;
+}
+
+
+.Nav button{
+  width: 250px;
+  height: 50px;
+  background: #67b3b37c;
+  border-radius: 20px;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.boxDemo {
+  position: relative;
+}
+
+.boxDemo::before {
+  content: "";
+  position: absolute;
+  inset: -0.1em;
+  border-radius: 20px; 
+  padding: 5px; 
+  background:linear-gradient(90deg,#ffffff,#a4a4a4); 
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+}
+
+
+/* media screen */
+@media screen and (max-width: 800px) {
+  .Nav p{
+    display: none;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .Nav button{
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .Nav img{
+    height: 30px;
+  }
+
+  .Nav{
+    min-height: 100px;
+  }
+}
+
+/* media screen */
+@media screen and (max-width: 800px) {
+  .Nav p{
+    display: none;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .Nav button{
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    margin-right: 1em;
+  }
+
+  .Nav img{
+    height: 30px;
+  }
+
+  .Nav{
+    min-height: 100px;
+  }
+
+}
+
+
+
+
+
+/*-----------------------------------------------------------------------------------*
+ *                        The CSS format what we do part.                            *
+ *-----------------------------------------------------------------------------------*/
+.whatwedo{
+    font-size: 55px;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin: 1em auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom: 5.5em;
+}
+
+.whatwedo-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    max-width: 500px;
+    max-width: 50%;
+    /* identical to box height */
+    color: #FFFFFF;
+    margin-top: 0.5em;
+}
+
+.whatwedo-box img{
+    height: 50px;
+    width: 50px;
+    margin: 0.5em
+}
+
+.whatwedo-box .hand-cursor{
+    font-size: 25px;
+    margin-left: 0em;
+    margin-right: 1em;
+}
+
+
+.whatwedo-image{
+    margin: auto;
+    margin-right: 0;
+    max-width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.whatwedo-image .imageSizeControl{
+    height: 270px;
+    width: 270px;
+}
+
+.whatwedo-image .logoSizeControl{
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .whatwedo{
+        font-size: 34px;
+        padding-top: 0em;
+        padding-bottom: 1em;
+        margin-left: 0.6em;
+        margin-right: 0.4em;
+    }
+
+    .whatwedo-box{
+        max-width: 100%;
+    }
+
+    .whatwedo-box .hand-cursor{
+        font-size: 15px;
+        margin-left: 0em;
+    }
+
+    .whatwedo-box img{
+        height: 25px;
+        width: 25px;
+    }
+
+    .whatwedo-image{
+        max-width: 100%;
+        margin: 2em auto;
+    } 
+
+    .whatwedo-image .imageSizeControl{
+      height: 100px;
+      width: 100px;
+    }
+}
+
+
+@media screen and (min-width: 800px) and (max-width: 1400px) {
+  .whatwedo-image .imageSizeControl{
+    height: 150px;
+    width: 150px;
+  }
+}
+
+
+
+
+
+ /*-----------------------------------------------------------------------------------*
+  *                        The CSS format for the how it works part.                  *
+  *-----------------------------------------------------------------------------------*/
+.howitwork{
+  color: #808285;
+  margin: 2em auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+
+.description{
+  max-width: 40%;
+  font-size: 35px;
+  font-weight: 100;
+
+
+}
+
+.description span{
+  font-size: 40px;
+  font-weight: 400;
+  padding-bottom: 1em;
+  color: #FFFFFF;
+
+}
+
+.description p{
+  margin-top: 1em;
+
+}
+
+.howitwork img{
+  height: 500px;
+  border-radius: 2em;
+}
+
+
+@media screen and (max-width: 800px) {
+  h3{
+    font-size: 18px;
+  }
+
+  .description{
+    font-size: 12px;
+  }
+
+  .description span{
+    font-size: 18px;
+  }
+
+  .howitwork img{
+    height: 200px;
+    border-radius: 1em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .description{
+      margin-left: 1em;
+      margin-right: 1em;
+  }
+
+  .description span{
+    font-size: 18px;
+  }
+
+  .howitwork img{
+    height: 140px;
+    border-radius: 1em;
+    margin-right: 0.8em;
+    margin-left: 0.8em;
+  }
+}
+
+
+
+
+/*-----------------------------------------------------------------------------------*
+ *                        The CSS format for the footer part.                        *
+ *-----------------------------------------------------------------------------------*/
+footer {
+  background-color: #181C1E;
+  color: white;
+  width: 100%;
+  align-items: center;
+}
+
+.gridbox{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 120fr;
+  align-items: center;
+  /* set the length of the line */
+  border-top: 1px solid #FFFFFF;
+  margin: 0.5em auto;
+  margin-bottom: 0em;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.gridbox:last-child{
+  text-align: right;
+}
+
+
+.gridabove{
+  margin: 0.5em auto;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  text-align: right;
+  list-style-type: none;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 18px;
+  /* identical to box height */
+  color: #FFFFFF;
+}
+
+.gridabove img{
+  height: 30px;
+}
+
+.iconsize {
+  height: 40px;
+  width: 40px;
+}
+
+
+@media screen and (max-width: 800px) {
+  .gridabove{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 12px;
+  }
+
+  .gridabove span{
+    font-size: 12px;
+  }
+
+  .gridabove img{
+    height: 15px;
+  }
+
+  .gridbox{
+    font-size: 12px;
+  }
+
+  .gridbox{
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------------------------*
+ *                        The CSS format for the contact page part.                  *
+ *-----------------------------------------------------------------------------------*/
+.box {
+  position: relative;
+}
+.box::before {
+  content: "";
+  position: absolute;
+  inset: -1em;
+  border-radius: 20px; 
+  padding: 5px; 
+  background:linear-gradient(270deg,#FFFFFF,#707070); 
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+}
+
+
+.ColumnInput{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1em;
+}
+
+.ContactForm{
+  padding: 2em;
+  min-width: 100px;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-radius: 30px;
+  border: 4px solid #707070;
+
+  /* two columns flexbox */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1em;
+  color: #808285;
+  line-height: 18px;
+  max-width: 500px;
+}
+
+.ContactForm input{
+  width: 45%;
+  border: 1px solid #707070;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: #808285;
+  background-color: #232323;
+}
+
+.ContactForm .EmailInput{
+  width: 100%;
+}
+
+
+
+
+.ContactForm textarea{
+  width: 100%;
+  height: 100px;
+  border: 1px solid #707070;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: #808285;
+  background-color: #232323;
+  grid-template-columns: 1fr;
+}
+
+.ContactForm button{
+  width: 40%;
+  height: 50px;
+  background: #acaeb3;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  color: #232323;
+  font-weight: 400;
+}
+
+.ContactForm button:hover{
+  background: #FFFFFF;
+}
+
+.ContactForm button[disabled] {
+  width: 40%;
+  height: 50px;
+  background: #515155;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  color: #232323;
+  font-weight: 400;
+}
+
+.ContactForm button[disabled]:hover {
+  pointer-events: none;
+}
+
+
+.ContactForm label{
+  flex:100%;
+}
+
+.ContactDiv{
+  /* two columns flexbox */
+  display: flex;
+  /* flex-wrap start from the left */
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  margin: 2em auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.ContactPara {
+  font-weight: 100;
+  font-size: 30px;
+  color: #BFC4C6;
+  /* set the max width of the paragraph */
+  max-width: 650px;
+  row-gap: 1em;
+  /* set the line space between two paragraphs */
+  line-height: 40px;
+  margin: 2em auto;
+}
+
+.ContactPara p{
+  margin: 1em auto;
+}
+
+@media screen and (max-width: 800px) {
+  .ContactPara{
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0em auto;
+  }
+
+  .ContactForm input{
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .ContactForm {
+    row-gap: 0.5em;
+  }
+
+  .ContactForm button{
+    width: 100%;
+    font-size: 15px;
+    height: 20px;
+    border-radius: 5px;
+  }
+
+  .ContactDiv{
+    flex-direction: column;
+    margin: 0em auto;
+    margin: 0.5em auto;
+  }
+
+  .ContactDiv label{
+    font-size: 15px;
+  }
+
+  .ColumnInput{
+    row-gap: 0.5em;
+  }
+
+  .ContactDiv textarea{
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+    .ContactPara p{
+      margin-left: 2.9em;
+      margin-right: 1.9em;
+      margin-bottom: 1em;
+    }
+}

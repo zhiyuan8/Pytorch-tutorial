@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gpu-app-service
+  annotations:
+    # This annotation is used to define the load balancer
+    service.beta.kubernetes.io/google-cloud-load-balancer-type: "Internal"
+    # labels of service is used to match the pods
+  labels:
+    app: gpu-app-service
+spec:
+  # type of service
+  type: LoadBalancer
+  # selector is used to match the pods
+  # any pod with the name below will be 
+  # used for the current service.
+  selector:
+    app: my-gpu-app
+  ports:
+  - name: http
+    # the port to access the service
+    port: 4000
+    protocol: TCP
+    # the port routed to the pods
+    targetPort: 4000
+  sessionAffinity: None
+

@@ -1,0 +1,1 @@
+docker run -it --name test_dreambooth --gpus all enlightaidreambooth
