@@ -41,4 +41,10 @@ ones = torch.ones(3, 2)
 print("one: ", ones)
 print("ones.dtype: ", ones.dtype)
 
+# range
+range_tensor = torch.arange(start=0, end=10, step=1)
+print("range_tensor: ", range_tensor)
 
+# tensor datatypes
+float_32_tensor = torch.tensor([1.0, 2.0, 3.0], dtype=torch.float32) # default is float 32
+float_16_tensor = torch.tensor([1.0, 2.0, 3.0], dtype=torch.float16)
