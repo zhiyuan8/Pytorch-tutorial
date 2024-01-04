@@ -1,5 +1,5 @@
 import torch
-
+from sklearn.datasets import make_circles
 
 class LinearRegressionModel(torch.nn.Module):
     def __init__(self, lr=0.01):
@@ -28,9 +28,7 @@ class LinearRegressionModel(torch.nn.Module):
             # Training
             self.train()
             y_logits = self(X_train).squeeze() # squeeze to remove extra `1` dimensions, this won't work unless model and data are on same device 
-            y_pred = self(X_train)
             train_loss = self.loss_fn(y_logits, y_train)
-            acc = accuracy_fn(y_pred, y_train)
             self.optimizer.zero_grad()
             train_loss.backward()
             self.optimizer.step()
