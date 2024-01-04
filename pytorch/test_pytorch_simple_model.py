@@ -2,7 +2,7 @@ import torch
 
 
 class LinearRegressionModel(torch.nn.Module):
-    def __init__(self):
+    def __init__(self, lr=0.01):
         super().__init__()
         self.weights = torch.nn.Parameter(
             torch.randn(1, requires_grad=True, dtype=torch.float32)
@@ -10,23 +10,42 @@ class LinearRegressionModel(torch.nn.Module):
         self.bias = torch.nn.Parameter(
             torch.randn(1, requires_grad=True, dtype=torch.float32)
         )
+        self.loss_fn = torch.nn.MSELoss()
+        self.optimizer = torch.optim.SGD(self.parameters(), lr=lr)
 
     def forward(self, x):
         return self.weights * x + self.bias
 
-    def train_model(self, X_train, y_train, epochs=100, lr=0.01):
-        loss_fn = torch.nn.MSELoss()
-        optimizer = torch.optim.SGD(self.parameters(), lr=lr)
+    def train_model(self, X_train, y_train, X_test, y_test, epochs=100):
+        """
+        1	Forward pass
+        2	Calculate the loss
+        3	Zero gradients
+        4	Perform backpropagation on the loss
+        5	Update the optimizer (gradient descent)
+        """
         for epoch in range(epochs):
             # Training
             self.train()
+            y_logits = self(X_train).squeeze() # squeeze to remove extra `1` dimensions, this won't work unless model and data are on same device 
             y_pred = self(X_train)
-            loss = loss_fn(y_pred, y_train)
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+            train_loss = self.loss_fn(y_logits, y_train)
+            acc = accuracy_fn(y_pred, y_train)
+            self.optimizer.zero_grad()
+            train_loss.backward()
+            self.optimizer.step()
+
+            # Testing
+            self.eval()
+            with torch.inference_mode():
+                y_test_pred = self(X_test)
+                test_loss = self.loss_fn(y_test_pred, y_test)
+
+            # Logging
             if epoch % 10 == 0:
-                print(f"Epoch {epoch} | Training Loss: {loss.item()}")
+                print(
+                    f"Epoch: {epoch} | Train Loss: {train_loss:.5f} | Test Loss: {test_loss:.5f}"
+                )
 
     def eval_model(self, X_test, y_test):
         self.eval()
@@ -60,10 +79,10 @@ def split_data(X, y, train_ratio=0.8):
 
 if __name__ == "__main__":
     torch.manual_seed(42)
-    model = LinearRegressionModel()
+    model = LinearRegressionModel(lr=0.01)
     X, y = generate_data()
     X_train, y_train, X_test, y_test = split_data(X, y)
-    model.train_model(X_train, y_train, epochs=100, lr=0.01)
+    model.train_model(X_train, y_train, X_test, y_test, epochs=100)
     y_pred_test, test_loss = model.eval_model(X_test, y_test)
     print(f"Test Loss: {test_loss}")
 
