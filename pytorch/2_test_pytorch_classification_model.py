@@ -118,7 +118,7 @@ if __name__ == "__main__":
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
     plt.title("Circle Data Visualization")
-    fig.savefig("circle_data.png")
+    fig.savefig("img/circle_data.png")
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
@@ -138,7 +138,7 @@ if __name__ == "__main__":
     plt.ylabel("Loss")
     plt.title("Training and Testing Loss Curves")
     plt.legend()
-    plt.savefig("loss_curves.png")
+    plt.savefig("img/loss_curves.png")
     plt.show()
 
     model_path = "circle_model_v1.pth"
@@ -173,5 +173,5 @@ if __name__ == "__main__":
     plt.ylabel("Feature 2")
     plt.title("Actual vs Predicted Data Points")
     plt.legend()
-    plt.savefig("actual_vs_predicted.png")
+    plt.savefig("img/actual_vs_predicted.png")
     plt.show()
