@@ -10,17 +10,20 @@
 - [ResNet](https://pytorch.org/hub/nvidia_deeplearningexamples_resnet50/)
 
 # Zero to Mastery Learn PyTorch for Deep Learning
+
 ## CNN
+[CNN explainer](https://poloclub.github.io/cnn-explainer/)  
 - CNN layers
     - Input Layer
     - Convolutional Layers
     - Pooling Layers
     - Fully Connected Layers
 
+## Modular
+
+
 
 ## Pytorch highlights
-- Examples at [Pytorch book](https://www.learnpytorch.io/)  
-    1. [CNN]
 
 1. DataLoader
 ```
