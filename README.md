@@ -20,7 +20,17 @@
     - Fully Connected Layers
 
 ## Modular
-
+```
+python modular/train.py --model MODEL_NAME --batch_size BATCH_SIZE --lr LEARNING_RATE --num_epochs NUM_EPOCHS
+```
+File structure :
+```
+data_setup.py - a file to prepare and download data if needed.
+engine.py - a file containing various training functions.
+model_builder.py or model.py - a file to create a PyTorch model.
+train.py - a file to leverage all other files and train a target PyTorch model.
+utils.py - a file dedicated to helpful utility functions.
+```
 
 
 ## Pytorch highlights
