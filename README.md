@@ -10,14 +10,14 @@
 - [ResNet](https://pytorch.org/hub/nvidia_deeplearningexamples_resnet50/)
 
 # Zero to Mastery Learn PyTorch for Deep Learning
+- Common Layer Types
+    - Linear Layers
+    - Convolutional Layers
+    - Recurrent Layers
+    - Transformers
 
 ## CNN
 [CNN explainer](https://poloclub.github.io/cnn-explainer/)  
-- CNN layers
-    - Input Layer
-    - Convolutional Layers
-    - Pooling Layers
-    - Fully Connected Layers
 
 ## Modular
 ```
