@@ -3,3 +3,4 @@ __pycache__/
 pytorch/data/
 pytorch/*.png
 pytorch/*.jpeg
+transformers-pytorch/data/

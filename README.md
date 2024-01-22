@@ -8,6 +8,11 @@
 - [Pytorch popular transfomers](https://pytorch.org/hub/huggingface_pytorch-transformers/)
 - [Pytorch AlexNet](https://pytorch.org/hub/pytorch_vision_alexnet/)
 - [ResNet](https://pytorch.org/hub/nvidia_deeplearningexamples_resnet50/)
+- [OCR for Latex](https://snip.mathpix.com/)
+
+## information
+- [twitter for new papers](https://twitter.com/_akhaliq)
+- [papers with code](https://paperswithcode.com/)
 
 # Zero to Mastery Learn PyTorch for Deep Learning
 - Common Layer Types
@@ -18,6 +23,25 @@
 
 ## CNN
 [CNN explainer](https://poloclub.github.io/cnn-explainer/)  
+
+### Vision Transformer (ViT)
+Layers - takes an input, performs an operation or function on the input, produces an output.  
+Blocks - a collection of layers, which in turn also takes an input and produces an output.
+
+- Patch + Position Embedding (inputs)
+- Linear projection of flattened patches (Embedded Patches)
+- LayerNorm
+- Multi-Headed Self-Attention
+- MLP (or Multilayer perceptron)
+- Transformer Encoder Block
+- MLP Head (outputs)
+
+```
+x_input = [class_token, image_patch_1, image_patch_2, ..., image_patch_n] + [class_token_pos, image_patch_1_pos, image_patch_2_pos, ..., image_patch_n_pos]
+x_output_MSA_block = MSA_layer(LN_layer(x_input)) + x_input
+x_output_MLP_block = MLP_layer(LN_layer(x_output_MSA_block)) + x_output_MSA_block
+y_output = Linear_layer(LN_layer(x_output_MLP_block))
+```
 
 ## Modular
 ```
@@ -31,7 +55,6 @@ model_builder.py or model.py - a file to create a PyTorch model.
 train.py - a file to leverage all other files and train a target PyTorch model.
 utils.py - a file dedicated to helpful utility functions.
 ```
-
 
 ## Pytorch highlights
 
