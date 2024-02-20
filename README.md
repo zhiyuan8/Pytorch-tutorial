@@ -1,4 +1,5 @@
 # Learning resources
+
 - [Deeplearning AI](https://www.deeplearning.ai/courses/)
 - [Pytorch book](https://www.learnpytorch.io/)
     - [transformer explained](https://jalammar.github.io/illustrated-transformer/)
@@ -16,57 +17,74 @@
 - [papers with code](https://paperswithcode.com/)
 
 # Zero to Mastery Learn PyTorch for Deep Learning
+
+## Pytorch model
+
+PyTorch 4 most import modules:  `[torch.nn](https://pytorch.org/docs/stable/nn.html)`, `[torch.optim](https://pytorch.org/docs/stable/optim.html)`, `[torch.utils.data.Dataset](https://pytorch.org/docs/stable/data.html#torch.utils.data.Dataset)` and `[torch.utils.data.DataLoader](https://pytorch.org/docs/stable/data.html)`.
+
+![Untitled](imgs/Pytorch%20Udemy%20Learning%20c1a27db215b44a018cf303392d263729/Untitled.png)
+
+## Pytorch training loops
+
+![Untitled](imgs/Pytorch%20Udemy%20Learning%20c1a27db215b44a018cf303392d263729/Untitled%201.png)
+
+1. **Forward pass** - The model goes through all of the training data once, performing its `forward()` function calculations (`model(x_train)`).
+2. **Calculate the loss** - The model's outputs (predictions) are compared to the ground truth and evaluated to see how wrong they are (`loss = loss_fn(y_pred, y_train`).
+3. **Zero gradients** - The optimizers gradients are set to zero (they are accumulated by default) so they can be recalculated for the specific training step (`optimizer.zero_grad()`).
+4. **Perform backpropagation on the loss** - Computes the gradient of the loss with respect for every model parameter to be updated (each parameter with `requires_grad=True`). This is known as **backpropagation**, hence "backwards" (`loss.backward()`).
+5. **Step the optimizer (gradient descent)** - Update the parameters with `requires_grad=True` with respect to the loss gradients in order to improve them (`optimizer.step()`).
+
+## Pytorch layers
+
+```markdown
 - Common Layer Types
     - Linear Layers
     - Convolutional Layers
     - Recurrent Layers
     - Transformers
+```
+
+## Pytorch datasets
+
+build custom datasets
+
+1. Subclass `torch.utils.data.Dataset`.
+2. Initialize our subclass with a `targ_dir` parameter (the target data directory) and `transform` parameter (so we have the option to transform our data if needed).
+3. Create several attributes for `paths` (the paths of our target images), `transform` (the transforms we might like to use, this can be `None`), `classes` and `class_to_idx` (from our `find_classes()` function).
+4. Create a function to load images from file and return them, this could be using `PIL` or `[torchvision.io](https://pytorch.org/vision/stable/io.html#image)` (for input/output of vision data).
+5. Overwrite the `__len__` method of `torch.utils.data.Dataset` to return the number of samples in the `Dataset`, this is recommended but not required. This is so you can call `len(Dataset)`.
+6. Overwrite the `__getitem__` method of `torch.utils.data.Dataset` to return a single sample from the `Dataset`, this is required.
 
 ## CNN
-[CNN explainer](https://poloclub.github.io/cnn-explainer/)  
 
-### Vision Transformer (ViT)
-Layers - takes an input, performs an operation or function on the input, produces an output.  
-Blocks - a collection of layers, which in turn also takes an input and produces an output.
+[https://poloclub.github.io/cnn-explainer/](imgs/https://poloclub.github.io/cnn-explainer/)
 
-- Patch + Position Embedding (inputs)
-- Linear projection of flattened patches (Embedded Patches)
-- LayerNorm
-- Multi-Headed Self-Attention
-- MLP (or Multilayer perceptron)
-- Transformer Encoder Block
-- MLP Head (outputs)
+![Untitled](imgs/Pytorch%20Udemy%20Learning%20c1a27db215b44a018cf303392d263729/Untitled%202.png)
 
-```
-x_input = [class_token, image_patch_1, image_patch_2, ..., image_patch_n] + [class_token_pos, image_patch_1_pos, image_patch_2_pos, ..., image_patch_n_pos]
-x_output_MSA_block = MSA_layer(LN_layer(x_input)) + x_input
-x_output_MLP_block = MLP_layer(LN_layer(x_output_MSA_block)) + x_output_MSA_block
-y_output = Linear_layer(LN_layer(x_output_MLP_block))
-```
+## Pytorch Modular
 
-## Modular
-```
-python modular/train.py --model MODEL_NAME --batch_size BATCH_SIZE --lr LEARNING_RATE --num_epochs NUM_EPOCHS
-```
-File structure :
-```
-data_setup.py - a file to prepare and download data if needed.
-engine.py - a file containing various training functions.
-model_builder.py or model.py - a file to create a PyTorch model.
-train.py - a file to leverage all other files and train a target PyTorch model.
-utils.py - a file dedicated to helpful utility functions.
-```
+![Untitled](imgs/Pytorch%20Udemy%20Learning%20c1a27db215b44a018cf303392d263729/Untitled%203.png)
 
-## Pytorch highlights
+`from torchinfo import summary` 
 
-1. DataLoader
+![Untitled](imgs/Pytorch%20Udemy%20Learning%20c1a27db215b44a018cf303392d263729/Untitled%204.png)
+
+## Pytorch transfer learning
+
+**Freezing the base model and changing the output layer**
+
+```python
+weights = torchvision.models.EfficientNet_B0_Weights.DEFAULT # .DEFAULT = best available weights 
+model = torchvision.models.efficientnet_b0(weights=weights).to(device)
+# Freeze all base layers in the "features" section of the model (the feature extractor) by setting requires_grad=False
+for param in model.features.parameters():
+    param.requires_grad = Falsec
+# Get the length of class_names (one output unit for each class)
+output_shape = len(class_names)
+# Recreate the classifier layer and seed it to the target device
+model.classifier = torch.nn.Sequential(
+    torch.nn.Dropout(p=0.2, inplace=True), 
+    torch.nn.Linear(in_features=1280, 
+                    out_features=output_shape, # same number of output units as our number of classes
+                    bias=True)).to(device)
 ```
-from torch.utils.data import DataLoader
-
-train_dataloader = DataLoader(train_data, # dataset to turn into iterable
-    batch_size=BATCH_SIZE, # how many samples per batch? 
-    shuffle=True # shuffle data every epoch?
-)
-train_features_batch, train_labels_batch = next(iter(train_dataloader))
-```
-
